@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Price Cost Warning Duoplane
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Show warning when cost is greater then price
 // @author       Peter Chen
 // @match        https://app.duoplane.com/orders/*
