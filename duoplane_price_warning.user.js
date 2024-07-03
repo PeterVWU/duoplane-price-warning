@@ -6,8 +6,8 @@
 // @author       Peter Chen
 // @match        https://app.duoplane.com/orders/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=duoplane.com
-// @updateURL    
-// @downloadURL  
+// @updateURL    https://github.com/PeterVWU/duoplane-price-warning/raw/main/duoplane_price_warning.user.js
+// @downloadURL  https://github.com/PeterVWU/duoplane-price-warning/raw/main/duoplane_price_warning.user.js
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -32,8 +32,8 @@
             background-color: #efef8d;
             width: 100%;
             text-align: center;
-            padding: 10px 0;
-            box-sizing: border-box;
+            padding: 10px 0; 
+            box-sizing: border-box; 
         }
         .positive {
             background-color: #99cc33;
@@ -41,7 +41,7 @@
         .negative {
             color: white;
             background-color: #e54141;
-        }
+        }   
         .linkToRow {
             cursor: pointer;
             margin: 0 5px;
@@ -50,7 +50,7 @@
 
     const controlsHtml = `
         <div id="tampermonkey-controls">
-
+            
         </div>
     `;
 
@@ -63,7 +63,7 @@
         orders.forEach(order => {
             findRow(order)
         })
-
+        
         const costGreaterThenPriceCountElement = document.createElement('div');
         const countTextnode = document.createTextNode(`# of line item cost > price: ${costGreaterThenPriceCount} `);
         costGreaterThenPriceCountElement.className = `warning `;
@@ -89,7 +89,7 @@
             if (!priceCell|| !costCell) {
                 return;
             }
-
+        
             const totalLinePrice = Number(priceCell.textContent.trim().replace(',', ''));
             totalOrderPrice+= totalLinePrice;
             const totalLineCost = Number(costCell.textContent.trim().replace(',', ''));
@@ -112,7 +112,7 @@
             console.log('totalLineCost', totalLineCost)
             console.log('cost greater than price',  totalLinePrice < totalLineCost)
         })
-
+        
         let orderDifference = totalOrderPrice - totalOrderCost;
         const differenceElement = document.createElement('div');
         const textnode = document.createTextNode(`Total price: $${totalOrderPrice.toFixed(2)} - Total cost: $${totalOrderCost.toFixed(2)} = $${orderDifference.toFixed(2)}`);
